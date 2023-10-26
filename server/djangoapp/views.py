@@ -38,7 +38,7 @@ def login_request(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['psw']
-        user = authentication(username=username, password=password)
+        user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('djangoapp:index')
