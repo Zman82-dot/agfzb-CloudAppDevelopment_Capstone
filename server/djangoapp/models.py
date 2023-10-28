@@ -30,12 +30,59 @@ class CarModel(models.Model):
     BIKE = "Bike"
     SCOOTER = "Scooter"
     OTHER = "Other"
-    CAR_CHOICES = [(SEDAN,"Sedan"), (SUV, "SUV"), (WAGON,"Wagon"),(SPORT,"Sports Car")]
+    CAR_CHOICES = [(SEDAN,"Sedan"), (SUV, "SUV"), (WAGON,"Wagon"),(SPORT,"Sports Car"),
+                   (COUPE,"Coupe"),(MINIVAN, "Minivan"), (VAN,"Van"),(PICKUP,"Pick-up truck"),
+                   (TRUCK,"Truck"),(BIKE,"motor bike"),(SCOOTER,"Scooter"), (OTHER,'Other')]
+    model_type = models.CharField(
+        null=False, max_length=15, choices=CAR_CHOICES, default=SEDAN)
 
-# - __str__ method to print a car make object
+    YEAR_CHOICES =[]
+    for r in range(1969,(datetime.datetime.now().year+1)):
+        YEAR_CHOICES.append((r,r))
+
+    year = models.IntegerField(
+        ('year'),choices=YEAR_CHOICES, default=datetime.datetime.now().year)
+
+    def _str_(self):
+        return self.name + "," + str(self.year) + "," + self.model_type              
+    
 
 
-# <HINT> Create a plain Python class `CarDealer` to hold dealer data
 
+class CarDealer:
+    def _init_(self, address, city, full_name, id, long,  lat, short_name, st, zip):
+      self.address = address
 
-# <HINT> Create a plain Python class `DealerReview` to hold review data#
+      self.city = city
+
+      self.full_name = full_name
+
+      self.id = id
+        
+      self.lat = lat
+
+      self.long = long
+
+      self.short_name = short_name
+
+      self.st = st
+
+      self.zip = zip
+
+    def _str_(self): 
+        return "Dealer name:" + self.full_name
+
+class DealerReview:
+    def _init_(self, dealership,id, name, purchase, review, car_make=None, car_model=None, car_year=None, purchase_date=None, sentiment="neutral"):
+       self.car_make = car_make
+       self.car_model = car_model
+       self.car_year = car_year
+       self.dealership = dealership
+       self.id = id
+       self.name = name
+       self.purchase = purchase
+       self.purchase_date = purchase_date
+       self.review = review
+       self.sentiment = sentiment
+    def _str_(self):
+        return "Reveiwer:" + self.name + "Review:" + self.review 
