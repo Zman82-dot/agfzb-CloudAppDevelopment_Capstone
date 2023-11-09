@@ -44,7 +44,7 @@ def login_request(request):
             return redirect('djangoapp:index')
         else:
             context['messge'] = "Invalid User name or Password."
-            return render(request, 'djangoapp/login.html', context)
+            return render(request, 'djangoapp/index.html', context)
     else:
         return render(request,'djangoapp/login.html', context)
 
