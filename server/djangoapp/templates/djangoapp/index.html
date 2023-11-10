@@ -13,19 +13,19 @@
 
 </head>
 
-    <body>
+    <body style="background-color:lightgray;">
        
     <!--Add a nav bar here -->
     <nav class="navbar navbar-light bg-light" style="color:whitesmoke; border-radius:30px;">
         <div class="container-fluid" style="background-color:blue; border-radius:30px;">
             <div class="navbar-header">
-                  <a class="navbar-brand" href="#" style="color:whitesmoke;">Dealer reveiw</a> <a>About us</a> <a> Contact Us</a>
+                  <a class="navbar-brand" href="#" style="color:whitesmoke;">Dealer reveiw</a> <a href="{% url 'djangoapp:about'%}" style="color:whitesmoke;">About us</a> <a href="{% url 'djangoapp:contact' %} " style="color:whitesmoke;"> Contact Us</a>
                 </div>   
                   <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
                     <li>
-                        <a class="btn btn-link" href="#"> {{user.first_name}}({{user.username}}) </a>
-                        <a class="btn btn-link" href="{% url 'djangoapp:logout' %}" > Logout</a>
+                        <a class="btn btn-link" href="#" style="color:whitesmoke;"> {{user.first_name}}({{user.username}}) </a>
+                        <a class="btn btn-link" href="{% url 'djangoapp:logout' %}" style="color:whitesmoke">Logout</a>
                     </li>
                     {% else %}
                     <li>
@@ -45,6 +45,40 @@
     </div>
 </nav>
     <!--Add a dealer table here -->
+
+    <div>
+    <img src="https://hosteriadeinumeriprimi.com/wp-content/uploads/2021/10/2023-Honda-Civic-Si-news-sedan-sport.jpg" style="border-radius:30px; padding:20px;" width=400px;><img src="https://www.encontracarros.com.br/upload/honda/novo-civic-2023-01.jpg" style="border-radius:30px; padding:20px;" width=300px;><img src="https://cdn.carbuzz.com/gallery-images/2023-ford-f-150-raptor-carbuzz-1020071-1600.jpg"style="border-radius:30px;" width=300px;>
+    </div>
+    <h2 style="color:blue;"><b>Available Dealerships</b></h2>
+    <table class="table" id="table" data-filter-control="true">
+        <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="full_name">Dealer Name</th>
+                <th data-field="city">City</th>
+                <th data-field="address">Address</th>
+                <th data-field="zip">Zip</th>
+                <th data-field="state" data-filter-control="select">State</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dealer in dealerships %}
+                <tr>
+                    <td>{{dealer.id}}</td>
+                    <td><a href=>{{dealer.full_name}}</a></td>
+                    <td>{{dealer.city}}</td>
+                    <td>{{dealer.address}}</td>
+                    <td>{{dealer.zip}}</td>
+                    <td>{{dealer.st}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function() {
+            $('#table').bootstrapTable();
+        });
+    </script>
 
     </body>
 

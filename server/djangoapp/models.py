@@ -15,7 +15,7 @@ def __str__(self):
 
 class CarModel(models.Model):
     car_make = models.ForeignKey(CarMake, null=True, on_delete=models.CASCADE)
-    name = models.CharField(null=False, max_length=50)
+    name = models.CharField(null=False, max_length=100)
     dealer_id = models.IntegerField(null=True)
 
     SEDAN = "Sedan"
@@ -45,32 +45,27 @@ class CarModel(models.Model):
 
     def _str_(self):
         return self.name + "," + str(self.year) + "," + self.model_type              
-    
+
 
 
 
 class CarDealer:
-    def _init_(self, address, city, full_name, id, long,  lat, short_name, st, zip):
-      self.address = address
 
-      self.city = city
+    def __init__(self, id, city, state, st, address, zip, lat, long, short_name, full_name):
+        self.id = id
+        self.city = city
+        self.state=state
+        self.st=st
+        self.address = address
+        self.zip = zip
+        self.lat = lat
+        self.long = long
+        self.short_name = short_name
+        self.full_name = full_name
 
-      self.full_name = full_name
+    def __str__(self):
+        return "Dealer name: " + self.full_name
 
-      self.id = id
-        
-      self.lat = lat
-
-      self.long = long
-
-      self.short_name = short_name
-
-      self.st = st
-
-      self.zip = zip
-
-    def _str_(self): 
-        return "Dealer name:" + self.full_name
 
 class DealerReview:
     def _init_(self, dealership,id, name, purchase, review, car_make=None, car_model=None, car_year=None, purchase_date=None, sentiment="neutral"):
