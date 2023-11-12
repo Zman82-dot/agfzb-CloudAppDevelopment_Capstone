@@ -68,16 +68,18 @@ class CarDealer:
 
 
 class DealerReview:
-    def _init_(self, dealership,id, name, purchase, review, car_make=None, car_model=None, car_year=None, purchase_date=None, sentiment="neutral"):
-       self.car_make = car_make
-       self.car_model = car_model
-       self.car_year = car_year
-       self.dealership = dealership
-       self.id = id
-       self.name = name
-       self.purchase = purchase
-       self.purchase_date = purchase_date
-       self.review = review
-       self.sentiment = sentiment
-    def _str_(self):
-        return "Reveiwer:" + self.name + "Review:" + self.review 
+    def __init__(self, dealership, name, purchase, review, purchase_date, car_make, car_model, car_year,sentiment, id):
+        self.dealership=dealership
+        self.name=name
+        self.purchase=purchase
+        self.review=review
+        self.purchase_date=purchase_date
+        self.car_make=car_make
+        self.car_model=car_model
+        self.car_year=car_year
+        self.sentiment=sentiment #Watson NLU service
+        self.id=id
+
+    def __str__(self):
+        return "Review: " + self.review +\
+                " Sentiment: " + self.sentiment 

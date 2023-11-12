@@ -73,6 +73,7 @@ def get_dealer_reviews_from_cf(url, dealerId):
             dealerReview_obj.sentiments(dealerReview_obj.review)
             results.append(dealer_Review_obj)
 
+
 def get_dealer_by_id_from_cf(url, dealerId):
     # Call get_request with a URL parameter
     json_result = get_request(url,dealerId=dealerId)
@@ -86,7 +87,29 @@ def get_dealer_by_id_from_cf(url, dealerId):
             st=dealer_doc["st"], zip=dealer_doc["zip"],state=dealer_doc["state"])
 
     return dealer_obj
+def get_dealer_reviews_from_cf(url, dealerId):
+    results = []
+    # Call get_request with a URL parameter
+    json_result = get_request(url,dealerId=dealerId)
+    if json_result:
+        # For each dealer object
+        for review_doc in json_result:
+            dealerReview_obj = DealerReview(
+                dealership=review_doc["dealership"], 
+                name=review_doc["name"], 
+                purchase=review_doc["purchase"],
+                review=review_doc["review"], 
+                purchase_date=review_doc["purchase_date"], 
+                car_make=review_doc["car_make"], 
+                car_model=review_doc["car_model"],
+                car_year=review_doc["car_year"], 
+                sentiment="NULL", 
+                id=review_doc["id"])
 
+            
+            results.append(dealerReview_obj)
+
+    return results
 
 def get_dealer_by_state_from_cf(url,state):
     results = []
