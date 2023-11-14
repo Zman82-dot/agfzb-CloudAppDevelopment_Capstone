@@ -43,8 +43,8 @@ class CarModel(models.Model):
     year = models.IntegerField(
         ('year'),choices=YEAR_CHOICES, default=datetime.datetime.now().year)
 
-    def _str_(self):
-        return self.name + "," + str(self.year) + "," + self.model_type              
+    def __str__(self):
+        return f"{self.year} {self.car_make.name} {self.name} "
 
 
 

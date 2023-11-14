@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import CarDealer, DealerReview, CarMake, CarModel
-from .restapis import get_dealers_from_cf,get_dealer_reviews_from_cf,get_dealer_by_id_from_cf,get_request,get_dealer_by_state_from_cf
+from .restapis import get_dealers_from_cf,get_dealer_reviews_from_cf,post_request, get_dealer_by_id_from_cf,get_request,get_dealer_by_state_from_cf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
@@ -132,17 +132,17 @@ def add_review(request, dealer_id):
             car = CarModel.objects.get(pk=form["car"])
             review["car_make"] = car.car_make.name
             review["car_model"] = car.name
-            review["car_year"] = car.year.strftime("%Y")
+            review["car_year"] = car.year
             # If the user bought the car, get the purchase date
             if form.get("purchasecheck"):
                 review["purchase_date"] = str(datetime.strptime(form.get("purchasedate"), "%Y-%m-%d"))
             else: 
                 review["purchase_date"] = None
-            url = "" 
+            url = "https://us-south.functions.appdomain.cloud/api/v1/web/2bc0c13d-ceb3-43cf-b879-123bfd6be355/dealers-pack/get-dealerships" 
             
             json_payload = {"review": review}
             result = post_request(url, json_payload, dealerId=dealer_id)
-            if (result):
+            if (result==200):
                 return redirect("djangoapp:dealer_details", dealer_id=dealer_id)
             else:
             # After posting the review the user is redirected back to the dealer details
