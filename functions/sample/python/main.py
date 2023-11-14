@@ -1,5 +1,5 @@
 """IBM Cloud Function that gets all reviews for a dealership
-
+e
 Returns:
     List: List of reviews for the given dealership
 """
