@@ -16,15 +16,15 @@
         <body style="background-color:lightgray;">
            
         <!--Add a nav bar here -->
-        <nav class="navbar " style="color:lightgrey; border-radius:30px; box-shadow:5px 5px darkgrey">
+        <nav class="navbar " style="background-color:blue; border-radius:30px; box-shadow:5px 5px black">
             <div class="container-fluid" style="background-color:blue; border-radius:30px;">
                 <div class="navbar-header">
-                      <a class="navbar-brand" href="{% url 'djangoapp:index' %}" style="color:whitesmoke;"><h3>Dealer Review</h3></a><b style="color:whitesmoke;">|</b> <a href="{% url 'djangoapp:about'%}" style="color:whitesmoke;">About us</a> 
+                      <a class="navbar-brand" href="#" style="color:whitesmoke;"><h3><b>Dealer Reveiw</b></h3></a><b style="color:whitesmoke;">|</b> <a href="{% url 'djangoapp:about'%}" style="color:whitesmoke;">About Us</a> <b style="color:whitesmoke;">|</b><a href="{% url 'djangoapp:contact' %} " style="color:whitesmoke;"> Contact Us</a><b style="color:whitesmoke;">|</b>
                     </div>   
                       <ul class="nav navbar-nav navbar-right">
                         {% if user.is_authenticated %}
                         <li>
-                            <a class="btn btn-link" href="#" style="color:whitesmoke;"> {{user.first_name}}({{user.username}}) </a>
+                            <a class="btn btn-link" href="#" style="color:whitesmoke;"> <b> Hello! {{user.first_name}}({{user.username}})</b> </a>
                             <a class="btn btn-link" href="{% url 'djangoapp:logout' %}" style="color:whitesmoke">Logout</a>
                         </li>
                         {% else %}
@@ -44,7 +44,6 @@
             </ul>    
         </div>
     </nav>
-    
     <h1>Contact us!</h1>
     <p>customer_service@Bestcars.com</p>
     </html

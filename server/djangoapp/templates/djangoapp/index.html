@@ -13,18 +13,18 @@
 
 </head>
 
-    <body style="background-color:lightgray;">
+    <body style="background-color:grey;">
        
     <!--Add a nav bar here -->
-    <nav class="navbar " style="color:lightgrey; border-radius:30px; box-shadow:5px 5px darkgrey">
+    <nav class="navbar " style="background-color:blue; border-radius:30px; box-shadow:5px 5px black">
         <div class="container-fluid" style="background-color:blue; border-radius:30px;">
             <div class="navbar-header">
-                  <a class="navbar-brand" href="#" style="color:whitesmoke;"><h3><b>Dealer Reveiw</b></h3></a><b style="color:whitesmoke;">|</b> <a href="{% url 'djangoapp:about'%}" style="color:whitesmoke;">About Us</a> <b style="color:whitesmoke;">|</b><a href="{% url 'djangoapp:contact' %} " style="color:whitesmoke;"> Contact Us</a>
+                  <a class="navbar-brand" href="#" style="color:whitesmoke;"><h3><b>Dealer Reveiw</b></h3></a><b style="color:whitesmoke;">|</b> <a href="{% url 'djangoapp:about'%}" style="color:whitesmoke;">About Us</a> <b style="color:whitesmoke;">|</b><a href="{% url 'djangoapp:contact' %} " style="color:whitesmoke;"> Contact Us</a><b style="color:whitesmoke;">|</b>
                 </div>   
                   <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
                     <li>
-                        <a class="btn btn-link" href="#" style="color:whitesmoke;"> <b>{{user.first_name}}({{user.username}})</b> </a>
+                        <a class="btn btn-link" href="#" style="color:whitesmoke;"> <b> Hello! {{user.first_name}}({{user.username}})</b> </a>
                         <a class="btn btn-link" href="{% url 'djangoapp:logout' %}" style="color:whitesmoke">Logout</a>
                     </li>
                     {% else %}
@@ -44,6 +44,7 @@
         </ul>    
     </div>
 </nav>
+<div style="background-image:linear-gradient(grey,white,darkgrey);">
     <!--Add a dealer table here -->
     <style>
         * {box-sizing: border-box;}
@@ -117,10 +118,10 @@
         </style>
     <div class="align-center">
         
-    <img  class="mySlides" src="https://hosteriadeinumeriprimi.com/wp-content/uploads/2021/10/2023-Honda-Civic-Si-news-sedan-sport.jpg" style="border-radius:30px;" width=500px;><img class="mySlides" src="https://www.encontracarros.com.br/upload/honda/novo-civic-2023-01.jpg" style="border-radius:30px; padding:10px;" width=350px;><img class=mySlides src="https://cdn.carbuzz.com/gallery-images/2023-ford-f-150-raptor-carbuzz-1020071-1600.jpg"style="border-radius:30px;" width=400px;> <img class="mySlides" src="https://family-auto.ru/wp-content/uploads/2020/05/nissan-quest.jpg" style="border-radius:30px;" width=400px;> 
+    <img  class="mySlides" src="https://hosteriadeinumeriprimi.com/wp-content/uploads/2021/10/2023-Honda-Civic-Si-news-sedan-sport.jpg" style="border-radius:30px; box-shadow: 5px 5px black;animation:fade;" width=700px;><img class=mySlides src="https://cdn.carbuzz.com/gallery-images/2023-ford-f-150-raptor-carbuzz-1020071-1600.jpg"style="border-radius:30px; box-shadow: 5px 5px black" width=600px;> <img class="mySlides" src="https://family-auto.ru/wp-content/uploads/2020/05/nissan-quest.jpg" style="border-radius:30px; box-shadow: 5px 5px black;" width=600px;> 
     </div>
     <br>
-
+</div>
 <div style="text-align:center">
   <span class="dot"></span> 
   <span class="dot"></span> 
@@ -149,8 +150,8 @@ function showSlides() {
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
-
-    <h2 style="color:blue;text-shadow:2px 2px grey"><b>Available Dealerships</b></h2>
+</div>
+    <h2 style="color:blue;text-shadow:2px 2px black"><b>Available Dealerships</b></h2>
     <table class="table" id="table" data-filter-control="true">
         <thead>
             <tr>
@@ -159,14 +160,14 @@ function showSlides() {
                 <th data-field="city">City</th>
                 <th data-field="address">Address</th>
                 <th data-field="zip">Zip</th>
-                <th data-field="state" data-filter-control="select">State</th>
+                <th data-field="state" data-filter-control="select" style="background-color:grey;">State</th>
             </tr>
         </thead>
         <tbody>
             {% for dealer in dealerships %}
                 <tr>
                     <td>{{dealer.id}}</td>
-                    <td><a href="{% url 'djangoapp:dealer_details' dealer.id %}">{{dealer.full_name}}</a></td>
+                    <td><a href="{% url 'djangoapp:dealer_details' dealer.id %}"style="color:whitesmoke;" >{{dealer.full_name}}</a></td>
                     <td>{{dealer.city}}</td>
                     <td>{{dealer.address}}</td>
                     <td>{{dealer.zip}}</td>

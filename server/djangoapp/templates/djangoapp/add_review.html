@@ -8,7 +8,34 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <nav class="navbar " style="background-color:blue; border-radius:30px; box-shadow:5px 5px black">
+        <div class="container-fluid" style="background-color:blue; border-radius:30px;">
+            <div class="navbar-header">
+                  <a class="navbar-brand" href="#" style="color:whitesmoke;"><h3><b>Dealer Reveiw</b></h3></a><b style="color:whitesmoke;">|</b> <a href="{% url 'djangoapp:about'%}" style="color:whitesmoke;">About Us</a> <b style="color:whitesmoke;">|</b><a href="{% url 'djangoapp:contact' %} " style="color:whitesmoke;"> Contact Us</a><b style="color:whitesmoke;">|</b>
+                </div>   
+                  <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a class="btn btn-link" href="#" style="color:whitesmoke;"> <b> Hello! {{user.first_name}}({{user.username}})</b> </a>
+                        <a class="btn btn-link" href="{% url 'djangoapp:logout' %}" style="color:whitesmoke">Logout</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
+                            {% csrf_token %}
+                        <div class="input-group" >
+                            <input type="text" class="form-control" placeholder="Username" name="username" >
+                            <input type="password" class="form-control" placeholder="Password" name="psw" >
+                            <button class="btn btn-primary" type="submit" >Login</button>
+                            <a class="btn btn-link" href="{% url 'djangoapp:registration' %}" > Sign up!</a> 
 
+                        </div>
+                </form>
+            </li>
+            {% endif %}
+        </ul>    
+    </div>
+</nav>
 </head>
 {% load static %}
 {% block content %}
