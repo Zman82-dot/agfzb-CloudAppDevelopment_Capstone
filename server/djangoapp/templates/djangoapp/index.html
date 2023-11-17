@@ -16,8 +16,8 @@
     <body style="background-color:grey;">
        
     <!--Add a nav bar here -->
-    <nav class="navbar " style="background-color:blue; border-radius:30px; box-shadow:5px 5px black">
-        <div class="container-fluid" style="background-color:blue; border-radius:30px;">
+    <nav class="navbar " style="background-image:linear-gradient(blue, darkblue); border-radius:30px; box-shadow:5px 5px black">
+        <div class="container-fluid" style="background-image:linear-gradient(blue, darkblue); border-radius:30px;">
             <div class="navbar-header">
                   <a class="navbar-brand" href="#" style="color:whitesmoke;"><h3><b>Dealer Reveiw</b></h3></a><b style="color:whitesmoke;">|</b> <a href="{% url 'djangoapp:about'%}" style="color:whitesmoke;">About Us</a> <b style="color:whitesmoke;">|</b><a href="{% url 'djangoapp:contact' %} " style="color:whitesmoke;"> Contact Us</a><b style="color:whitesmoke;">|</b>
                 </div>   
@@ -119,15 +119,16 @@
     <div class="align-center">
         
     <img  class="mySlides" src="https://hosteriadeinumeriprimi.com/wp-content/uploads/2021/10/2023-Honda-Civic-Si-news-sedan-sport.jpg" style="border-radius:30px; box-shadow: 5px 5px black;animation:fade;" width=700px;><img class=mySlides src="https://cdn.carbuzz.com/gallery-images/2023-ford-f-150-raptor-carbuzz-1020071-1600.jpg"style="border-radius:30px; box-shadow: 5px 5px black" width=600px;> <img class="mySlides" src="https://family-auto.ru/wp-content/uploads/2020/05/nissan-quest.jpg" style="border-radius:30px; box-shadow: 5px 5px black;" width=600px;> 
+    <div style="text-align:center; margin:15px;">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span>
+        <span class="dot"></span>
     </div>
+</div>
     <br>
 </div>
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span>
-  <span class="dot"></span>
-</div>
+>
 
 <script>
 let slideIndex = 0;
@@ -150,9 +151,10 @@ function showSlides() {
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
+<hr>
 </div>
     <h2 style="color:blue;text-shadow:2px 2px black"><b>Available Dealerships</b></h2>
-    <table class="table" id="table" data-filter-control="true">
+    <table class="table" id="table" data-filter-control="true" style="margin:20px;align align-center;background-color:grey;border-radius:30px;">
         <thead>
             <tr>
                 <th data-field="id">ID</th>

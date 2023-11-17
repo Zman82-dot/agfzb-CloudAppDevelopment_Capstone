@@ -5,8 +5,7 @@ from .models import CarDealer, DealerReview
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from requests.auth import HTTPBasicAuth
 from ibm_watson import NaturalLanguageUnderstandingV1
-from ibm_watson.natural_language_understanding_v1 \
-    import Features, SentimentOptions
+from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
 # Create a `get_request` to make HTTP GET requests
 import requests
 import json
@@ -140,14 +139,16 @@ def get_dealer_by_state_from_cf(url,state):
 # def analyze_review_sentiments(text):
 # - Call get_request() with specified arguments
 # - Get the returned sentiment label such as Positive or Negative
-def analyze_review_sentiments(text):
-    apy_key="MvkL0fROSvc12DQGLrqS7Cke1KffaAy24lsaUk1Qs3e5"
-    url="https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/830874d7-fc7c-4182-b478-74bbcc6db7e5"
-    authenticator = IAMAuthenticator(api_key)
-    natural_language_understanding = NaturalLanguageUnderstandingV1(version='2021-08-01',authenticator=authenticator)
-    natural_languge_understanding.set_service_url(url)
-    response = natural_language_understanding.analyze(text=text+"hello hello hello",features=Features(sentiment = SentimentOptions(targets=[text+"hello hello hello"]))).get_result()
-    label=json.dumps(response, indent=2)
-    label = response['sentiment']['document']['lael']
 
+def analyze_review_sentiments(dealer_review):
+    API_KEY = "_7CqwU7jVyRIOD3C5HEFmy7D6C1UJamYVCtU1jNaqbF4"
+    NLU_URL = "https://apikey-v2-1esozalhmioje27276dmnb0y6aywt2wdaqq2kwsoe2eq:4a3cabcd92233aba7728394be8b65fba@ee798b63-9324-4f45-839d-1628086ab831-bluemix.cloudantnosqldb.appdomain.cloud"
+    authenticator = IAMAuthenticator(API_KEY)
+    natural_language_understanding = NaturalLanguageUnderstandingV1(
+        version='2021-08-01', authenticator=authenticator)
+    natural_language_understanding.set_service_url(NLU_URL)
+    response = natural_language_understanding.analyze(text=dealer_review, features=Features(
+        sentiment=SentimentOptions(targets=[dealer_review]))).get_result()
+    label = json.dumps(response, indent=2)
+    label = response['sentiment']['document']['label']
     return(label)

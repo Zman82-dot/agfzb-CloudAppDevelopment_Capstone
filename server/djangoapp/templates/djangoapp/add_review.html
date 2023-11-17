@@ -8,8 +8,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-    <nav class="navbar " style="background-color:blue; border-radius:30px; box-shadow:5px 5px black">
-        <div class="container-fluid" style="background-color:blue; border-radius:30px;">
+    <body style="background-color:grey;">
+    <nav class="navbar " style="background-image:linear-gradient(blue, darkblue); border-radius:30px; box-shadow:5px 5px black">
+        <div class="container-fluid" style="background-image:linear-gradient(blue,darkblue); border-radius:30px;">
             <div class="navbar-header">
                   <a class="navbar-brand" href="#" style="color:whitesmoke;"><h3><b>Dealer Reveiw</b></h3></a><b style="color:whitesmoke;">|</b> <a href="{% url 'djangoapp:about'%}" style="color:whitesmoke;">About Us</a> <b style="color:whitesmoke;">|</b><a href="{% url 'djangoapp:contact' %} " style="color:whitesmoke;"> Contact Us</a><b style="color:whitesmoke;">|</b>
                 </div>   
@@ -40,6 +41,8 @@
 {% load static %}
 {% block content %}
 <div class="container mt-4">
+    <div class="card" style="background-color:lightgrey; border-radius:30px;">
+       <div class ="card-body"> 
     <h1>Write a review</h1>
     <h4><i>for {{dealer.full_name}}</i></h4>
     <br>
@@ -71,9 +74,12 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+</div>
+</div>
 <script type="text/javascript">
     $('.date-own').datepicker({
        format: 'mm/dd/yyyy'
      });
 </script>
 {% endblock %}
+</body>
