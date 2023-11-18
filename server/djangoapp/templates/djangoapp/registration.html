@@ -22,7 +22,15 @@
                 <input type="text" class="form-control" placeholder="Last Name" name="lastname" required>
                 <label for="psw"><b>Password</b></label>
                 <input type="password" class="form-control" placeholder="Password" name="psw" required>
-
+            </div>
+            {% if message %}
+              <div class="alert alert-warning"> <!--Style the message paragraph with .alert and .alert-warning class -->
+                {{ message }}
+              </div>
+            {% endif %}
+            <button class="btn btn-primary" type="submit">Login</button> <!--Style button with .btn and .btn-primary class -->
+          </div>
+        </form>
 
             </div>
 
